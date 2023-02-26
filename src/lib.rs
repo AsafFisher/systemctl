@@ -641,6 +641,26 @@ impl Unit {
         restart(&self.name)
     }
 
+    /// Forces given `unit` to stop
+    pub fn stop(&self) -> std::io::Result<ExitStatus> {
+        stop(&self.name)
+    }
+
+    /// Starts the Unit
+    pub fn start(&self) -> std::io::Result<ExitStatus> {
+        start(&self.name)
+    }
+
+    /// Triggers [reload command](https://www.freedesktop.org/software/systemd/man/systemd.service.html#ExecReload=) for `Unit`
+    pub fn reload(&self) -> std::io::Result<ExitStatus> {
+        reload(&self.name)
+    }
+
+    /// Enables given `unit`
+    pub fn enable(&self) -> std::io::Result<ExitStatus> {
+        enable(&self.name)
+    }
+
     /// Returns verbose status for Self
     pub fn status(&self) -> std::io::Result<String> {
         status(&self.name)
